@@ -21,10 +21,7 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Sök Livsmedel"
-        searchController.searchBar.barTintColor = UIColor.LivsmedelGreen()
         tableView.tableHeaderView = searchController.searchBar
-        
-        //tableView.backgroundColor = UIColor(colorLiteralRed: 243.0/255.0, green: 255.0/255.0, blue: 217.0/255.0, alpha: 1.0)
         definesPresentationContext = true
     }
     
@@ -48,7 +45,7 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
             cell.energyValue = 230
         } else {
             cell.nameLabel?.text = "" //manager.sampleData[indexPath.row].name
-            cell.name = ""
+            cell.name = "" //manager.sampleData[indexPath.row].name
             
             cell.energyValueLabel?.text = "300 kj" // TODO: - Change from default value
             cell.energyValue = 300
@@ -85,9 +82,11 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
         
         if segue.identifier == "pushToDetailsView" {
             let detailsViewController = segue.destination as! DetailsViewController
-                detailsViewController.manager = self.manager
+            detailsViewController.manager = self.manager
+//            detailsViewController.foodProductName = cell.name
 //            if let cell = sender as? MyTableViewCell {
-//                detailsViewController.foodProductName = cell.name!
+//                detailsViewController.titleLabel?.text = cell.name
+//                segue.destination.title = cell.name
 //            }
         }
     }

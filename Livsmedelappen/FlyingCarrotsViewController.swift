@@ -9,21 +9,56 @@
 import UIKit
 
 class FlyingCarrotsViewController: UIViewController {
-
+ 
+    @IBOutlet weak var smallCarrot: UILabel!
+    @IBOutlet weak var smallCarrot2: UILabel!
+    @IBOutlet weak var smallCarrot3: UILabel!
+    @IBOutlet weak var smallCarrot4: UILabel!
+    @IBOutlet weak var smallCarrot5: UILabel!
+    @IBOutlet weak var smallCarrot6: UILabel!
+    @IBOutlet weak var smallCarrot7: UILabel!
+    @IBOutlet weak var bigCarrot: UILabel!
+    
+    var dynamicAnimator: UIDynamicAnimator!
+    var gravity: UIGravityBehavior!
+    var collision: UICollisionBehavior!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dynamicAnimator = UIDynamicAnimator(referenceView: view)
+        
+        gravity = UIGravityBehavior(items: [smallCarrot, smallCarrot2, smallCarrot3, smallCarrot4, smallCarrot5, smallCarrot6, smallCarrot7, bigCarrot])
 
-        // Do any additional setup after loading the view.
+        collision = UICollisionBehavior(items: [smallCarrot, smallCarrot2, smallCarrot3, smallCarrot4, smallCarrot5, smallCarrot6, smallCarrot7, bigCarrot])
+        collision.translatesReferenceBoundsIntoBoundary = true
+        
+        dynamicAnimator.addBehavior(gravity)
+        dynamicAnimator.addBehavior(collision)
+
+        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func snapCarrot(_ sender: UITapGestureRecognizer) {
+        let tapPosition = sender.location(in: view)
+        dynamicAnimator.removeBehavior(gravity)
+        dynamicAnimator.removeBehavior(collision)
+        
+        UIView.animate(withDuration: 1.5, animations: {
+            self.bigCarrot.center = tapPosition
+            self.smallCarrot.center = tapPosition
+            self.smallCarrot2.center = tapPosition
+            self.smallCarrot3.center = tapPosition
+            self.smallCarrot4.center = tapPosition
+            self.smallCarrot5.center = tapPosition
+            self.smallCarrot6.center = tapPosition
+        }) { finished in
+            NSLog("carrat animations done. DONE = \(finished)")
+            UIView.animate(withDuration: 1.0, animations: {
+                self.bigCarrot.center = self.view.center
+                self.smallCarrot7.center = tapPosition
+            })
+        }
     }
-    */
-
+    
 }

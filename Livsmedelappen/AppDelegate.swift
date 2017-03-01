@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UISearchBar.appearance().barTintColor = UIColor.LivsmedelGreen()
         UISearchBar.appearance().tintColor = UIColor.white
         UITabBar.appearance().tintColor =  UIColor.LivsmedelGreen()
         UINavigationBar.appearance().tintColor = UIColor.white
