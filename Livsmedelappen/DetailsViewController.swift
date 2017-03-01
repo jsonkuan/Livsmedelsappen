@@ -9,18 +9,17 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-
+    
+    @IBOutlet weak var image: UIImageView!
+    
+    @IBOutlet weak var carbohydrateLabel: UILabel!
+    @IBOutlet weak var fatLabel: UILabel!
+    @IBOutlet weak var protienLabel: UILabel!
+    @IBOutlet weak var sugarLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     /*
     // MARK: - Navigation

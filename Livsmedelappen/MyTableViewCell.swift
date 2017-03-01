@@ -10,11 +10,17 @@ import UIKit
 
 class MyTableViewCell: UITableViewCell {
 
-    var foodProduct: String?
-    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var energyValueLabel: UILabel!
+
+    var name: String?
+    var energyValue : Int?
+//
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        nameLabel.text = name
+        energyValueLabel.text = String(describing: energyValue)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
