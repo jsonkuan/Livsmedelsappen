@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9C16A5611E645A0300D382EB /* FoodProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C16A5601E645A0300D382EB /* FoodProduct.swift */; };
+		9C42CF321E670FCD00C42F63 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42CF311E670FCD00C42F63 /* FavoritesTableViewController.swift */; };
+		9C42CF341E675BD700C42F63 /* FlyingCarrotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42CF331E675BD700C42F63 /* FlyingCarrotsViewController.swift */; };
 		9C5A2E281E5B333100232244 /* SearchListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A2E271E5B333100232244 /* SearchListTableViewController.swift */; };
 		9C5A2E2A1E5B3D7C00232244 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A2E291E5B3D7C00232244 /* DetailsViewController.swift */; };
 		9C8380101E5A179F0036AA27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83800F1E5A179F0036AA27 /* AppDelegate.swift */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		9C16A5601E645A0300D382EB /* FoodProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodProduct.swift; sourceTree = "<group>"; };
+		9C42CF311E670FCD00C42F63 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
+		9C42CF331E675BD700C42F63 /* FlyingCarrotsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyingCarrotsViewController.swift; sourceTree = "<group>"; };
 		9C5A2E271E5B333100232244 /* SearchListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchListTableViewController.swift; sourceTree = "<group>"; };
 		9C5A2E291E5B3D7C00232244 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		9C83800C1E5A179F0036AA27 /* Livsmedelappen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Livsmedelappen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +52,7 @@
 		9C8380031E5A179F0036AA27 = {
 			isa = PBXGroup;
 			children = (
+				9C42CF311E670FCD00C42F63 /* FavoritesTableViewController.swift */,
 				9C83800E1E5A179F0036AA27 /* Livsmedelappen */,
 				9C83800D1E5A179F0036AA27 /* Products */,
 			);
@@ -65,13 +70,14 @@
 			isa = PBXGroup;
 			children = (
 				9C83800F1E5A179F0036AA27 /* AppDelegate.swift */,
-				9C8380111E5A179F0036AA27 /* ViewController.swift */,
-				9C8380131E5A179F0036AA27 /* Main.storyboard */,
 				9CF560411E5EF09F004D7DE1 /* DataManager.swift */,
+				9C5A2E291E5B3D7C00232244 /* DetailsViewController.swift */,
 				9C16A5601E645A0300D382EB /* FoodProduct.swift */,
+				9C8380131E5A179F0036AA27 /* Main.storyboard */,
+				9C42CF331E675BD700C42F63 /* FlyingCarrotsViewController.swift */,
 				9CF5603F1E5EDFF0004D7DE1 /* MyTableViewCell.swift */,
 				9C5A2E271E5B333100232244 /* SearchListTableViewController.swift */,
-				9C5A2E291E5B3D7C00232244 /* DetailsViewController.swift */,
+				9C8380111E5A179F0036AA27 /* ViewController.swift */,
 				9C8380161E5A179F0036AA27 /* Assets.xcassets */,
 				9C8380181E5A179F0036AA27 /* LaunchScreen.storyboard */,
 				9C83801B1E5A179F0036AA27 /* Info.plist */,
@@ -155,6 +161,8 @@
 				9C8380121E5A179F0036AA27 /* ViewController.swift in Sources */,
 				9CF560421E5EF09F004D7DE1 /* DataManager.swift in Sources */,
 				9C5A2E281E5B333100232244 /* SearchListTableViewController.swift in Sources */,
+				9C42CF321E670FCD00C42F63 /* FavoritesTableViewController.swift in Sources */,
+				9C42CF341E675BD700C42F63 /* FlyingCarrotsViewController.swift in Sources */,
 				9C16A5611E645A0300D382EB /* FoodProduct.swift in Sources */,
 				9C8380101E5A179F0036AA27 /* AppDelegate.swift in Sources */,
 				9CF560401E5EDFF0004D7DE1 /* MyTableViewCell.swift in Sources */,

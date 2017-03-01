@@ -21,7 +21,10 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Sök Livsmedel"
+        searchController.searchBar.barTintColor = UIColor.LivsmedelGreen()
         tableView.tableHeaderView = searchController.searchBar
+        
+        //tableView.backgroundColor = UIColor(colorLiteralRed: 243.0/255.0, green: 255.0/255.0, blue: 217.0/255.0, alpha: 1.0)
         definesPresentationContext = true
     }
     
@@ -32,7 +35,7 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (shouldUseSearchResult ? searchResult : manager.sampleData).count
+        return (shouldUseSearchResult ? searchResult : []).count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,14 +44,13 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
             cell.nameLabel?.text = searchResult[indexPath.row].name
             cell.name = searchResult[indexPath.row].name
             
-            cell.energyValueLabel?.text = "930 kj"
+            cell.energyValueLabel?.text = "\(searchResult[indexPath.row].calories) kCal"
             cell.energyValue = 230
-            //cell.energyValue = nutritionSearchResult[indexPath.row].calories
         } else {
-            cell.nameLabel?.text = manager.sampleData[indexPath.row].name
-            cell.name = manager.sampleData[indexPath.row].name
+            cell.nameLabel?.text = "" //manager.sampleData[indexPath.row].name
+            cell.name = ""
             
-            cell.energyValueLabel?.text = "300 kj"
+            cell.energyValueLabel?.text = "300 kj" // TODO: - Change from default value
             cell.energyValue = 300
         }
         return cell
@@ -57,13 +59,13 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
     // MARK: - UISearchResultsUpdating protocol methods
     
     func updateSearchResults(for searchController: UISearchController) {
-     
+        
         if let query = searchController.searchBar.text?.lowercased() {
             let url = "http://www.matapi.se/foodstuff?query=\(query)"
             manager.loadDataFromUrl(url: url)
             searchResult = manager.data.filter { $0.name.contains(query) }
         } else {
-            searchResult = manager.sampleData
+            searchResult = []
         }
         tableView.reloadData()
     }
@@ -80,10 +82,14 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cell = sender as? MyTableViewCell {
-            segue.destination.title = cell.name
+        
+        if segue.identifier == "pushToDetailsView" {
+            let detailsViewController = segue.destination as! DetailsViewController
+                detailsViewController.manager = self.manager
+//            if let cell = sender as? MyTableViewCell {
+//                detailsViewController.foodProductName = cell.name!
+//            }
         }
     }
-    
 }
 

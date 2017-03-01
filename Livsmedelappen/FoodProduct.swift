@@ -8,19 +8,20 @@
 
 import Foundation
 
-struct FoodProduct {
+class FoodProduct {
     let name: String
     let number: Int
     let calories: Int
+//    , protein, fat, carbohydrates, sugar: Int
+//    enum Nutrition: String {
+//        case calories, protein, fat, carbohydrates, sugar
+//    }
     
-    enum Nutrition: String {
-        case calories, protein, fat, carbohydrates
-    }
-    
-    init(name: String, number: Int) {
+    init(name: String, number: Int, calories: Int) {
         self.name = name
         self.number = number
-        calories = 0
+        self.calories = calories
+        
     }
     
     init(json: [String: Any]) {
@@ -32,15 +33,19 @@ struct FoodProduct {
             fatalError("Unable to parse numbers")
         }
         
-//        guard let cal = json["carbohydrates"] as? Int else {
-//                fatalError("Unable to parse calories")
-//        }
-//        
-        //        guard let Nutrition.calories = json["number"]
-        
+        //        guard let container = json["number"] as? [String: Any],
+        //            let nutrientValue = container["nutrientValues"] as? [String:Any],
+        //            let calories = nutrientValue["energyKcal"] as? Int else {
+        //                fatalError("Unable to parse calories")
+        //        }
         self.name = name
         self.number = number
-        self.calories = 0
+        self.calories = 404
+        
+//        self.protein = protein
+//        self.fat = fat
+//        self.carbohydrates = carbohydrates
+//        self.sugar = sugar
     }
 }
 
