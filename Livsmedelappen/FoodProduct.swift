@@ -47,5 +47,17 @@ class FoodProduct {
 //        self.carbohydrates = carbohydrates
 //        self.sugar = sugar
     }
+    
+//    required init?(coder aDecoder: NSCoder) {
+//        aDecoder.decodeObject(forKey: "favoriteList")
+//    }
+//    
+//    func encode(with aCoder: NSCoder) {
+//        aCoder.encode(name)
+//        aCoder.encode(number)
+//        aCoder.encode(calories)
+//    }
+    
+   
 }
 

@@ -15,7 +15,15 @@ enum SerializationError: Error {
 
 class DataManager {
     
+    // Singleton
+    static let sharedInstance: DataManager = {
+        let instance = DataManager()
+        //Setup code here...
+        return instance
+    }()
+    
     var data: [FoodProduct] = []
+    var favorites: [FoodProduct] = []
    
     func loadDataFromUrl(url: String) {
         if let safeUrlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),

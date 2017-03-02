@@ -17,7 +17,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var fatLabel: UILabel!
     
-    var manager = DataManager()
+    let manager = DataManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +28,36 @@ class DetailsViewController: UIViewController {
         titleLabel?.text =  "\(manager.data[0].name)"
     }
     
+    @IBAction func takePhoto(_ sender: Any) {
+    }
+    
+    @IBAction func saveToFavorites(_ sender: Any) {
+        manager.favorites.append(manager.data[0])
+        
+//        var archiveArray: [Data]?
+//        let favoriteItem = NSKeyedArchiver.archivedData(withRootObject: manager.favorites)
+//        archiveArray?.append(favoriteItem)
+//        
+//        let defaults = UserDefaults.standard
+//        defaults.set(favoriteItem, forKey: "favoritesList")
+//        defaults.synchronize()
+//        
+//        NSMutableArray *archiveArray = [NSMutableArray arrayWithCapacity:mutableDataArray.count];
+//        for (BC_Person *personObject in mutableDataArray) {
+//            NSData *personEncodedObject = [NSKeyedArchiver archivedDataWithRootObject:personObject];
+//            [archiveArray addObject:personEncodedObject];
+//        }
+//        
+//        NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
+//        [userData setObject:archiveArray forKey:@"personDataArray"];
+    }
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
+//     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//     // Get the new view controller using segue.destinationViewController.
+//     // Pass the selected object to the new view controller.
+//     }
     
 }

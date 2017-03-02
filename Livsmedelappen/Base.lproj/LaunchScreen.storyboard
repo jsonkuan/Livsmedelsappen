@@ -23,16 +23,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="U3Q-PC-N0H">
-                                <rect key="frame" x="47" y="20" width="280" height="81"/>
+                                <rect key="frame" x="90" y="20" width="181" height="59"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.45098039220000002" green="0.82745098039999998" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="U3Q-PC-N0H" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="NMF-cl-KC9"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="U3Q-PC-N0H" secondAttribute="bottom" constant="566" id="RAj-sG-3Du"/>
-                            <constraint firstItem="U3Q-PC-N0H" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="eP4-4y-sjw"/>
-                            <constraint firstItem="U3Q-PC-N0H" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="31" id="fMJ-fG-y41"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="U3Q-PC-N0H" secondAttribute="trailing" constant="32" id="mM3-pn-zFj"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="U3Q-PC-N0H" secondAttribute="bottom" constant="588" id="0pP-Lc-sQe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="U3Q-PC-N0H" secondAttribute="trailing" constant="88" id="1nj-ex-z5I"/>
+                            <constraint firstItem="U3Q-PC-N0H" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="74" id="YcE-XC-VJd"/>
+                            <constraint firstItem="U3Q-PC-N0H" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="gWH-rZ-sI6"/>
                         </constraints>
                     </view>
                 </viewController>

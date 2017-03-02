@@ -12,11 +12,11 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
     
     var searchController: UISearchController!
     var searchResult: [FoodProduct] = []
-    let manager = DataManager()
+    let manager = DataManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -78,17 +78,17 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
     
     // MARK: - Navigation
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "pushToDetailsView" {
-            let detailsViewController = segue.destination as! DetailsViewController
-            detailsViewController.manager = self.manager
-//            detailsViewController.foodProductName = cell.name
-//            if let cell = sender as? MyTableViewCell {
-//                detailsViewController.titleLabel?.text = cell.name
-//                segue.destination.title = cell.name
-//            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        if segue.identifier == "pushToDetailsView" {
+//            let detailsViewController = segue.destination as! DetailsViewController
+////            detailsViewController.manager = self.manager
+////            detailsViewController.foodProductName = cell.name
+////            if let cell = sender as? MyTableViewCell {
+////                detailsViewController.titleLabel?.text = cell.name
+////                segue.destination.title = cell.name
+////            }
+//        }
+//    }
 }
 
