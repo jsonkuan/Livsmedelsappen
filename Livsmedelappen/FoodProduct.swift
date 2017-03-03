@@ -8,21 +8,15 @@
 
 import Foundation
 
-class FoodProduct {
+class FoodProduct : CustomStringConvertible {
+    
     let name: String
     let number: Int
-    let calories: Int
-//    , protein, fat, carbohydrates, sugar: Int
-//    enum Nutrition: String {
-//        case calories, protein, fat, carbohydrates, sugar
-//    }
-    
-    init(name: String, number: Int, calories: Int) {
-        self.name = name
-        self.number = number
-        self.calories = calories
-        
-    }
+    var calories: Double?
+    var protein: Double?
+    var carbohydrates: Double?
+    var fat: Double?
+    var salt: Double?
     
     init(json: [String: Any]) {
         guard let name = json["name"] as? String else {
@@ -32,32 +26,23 @@ class FoodProduct {
         guard let number = json["number"] as? Int else {
             fatalError("Unable to parse numbers")
         }
-        
-        //        guard let container = json["number"] as? [String: Any],
-        //            let nutrientValue = container["nutrientValues"] as? [String:Any],
-        //            let calories = nutrientValue["energyKcal"] as? Int else {
-        //                fatalError("Unable to parse calories")
-        //        }
         self.name = name
         self.number = number
-        self.calories = 404
-        
-//        self.protein = protein
-//        self.fat = fat
-//        self.carbohydrates = carbohydrates
-//        self.sugar = sugar
+    }
+     //    required init?(coder aDecoder: NSCoder) {
+    //        aDecoder.decodeObject(forKey: "favoriteList")
+    //    }
+    //
+    //    func encode(with aCoder: NSCoder) {
+    //        aCoder.encode(name)
+    //        aCoder.encode(number)
+    //        aCoder.encode(calories)
+    //    }
+    
+    var description: String {
+        return "Name: \(self.name), Number:\(self.number)"
     }
     
-//    required init?(coder aDecoder: NSCoder) {
-//        aDecoder.decodeObject(forKey: "favoriteList")
-//    }
-//    
-//    func encode(with aCoder: NSCoder) {
-//        aCoder.encode(name)
-//        aCoder.encode(number)
-//        aCoder.encode(calories)
-//    }
     
-   
 }
 

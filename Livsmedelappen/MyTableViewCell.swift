@@ -12,21 +12,16 @@ class MyTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var energyValueLabel: UILabel!
-
-    var name: String?
-    var energyValue : Int?
-//
+    
+    var foodProduct: FoodProduct?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        nameLabel.text = name
-        energyValueLabel.text = String(describing: energyValue)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

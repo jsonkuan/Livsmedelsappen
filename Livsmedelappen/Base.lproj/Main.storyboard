@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rzw-Zh-EjI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rzw-Zh-EjI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XkW-rw-tbp" id="IcM-80-JEe">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkG-5e-o6R">
@@ -98,7 +98,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nm4-Xb-zgO" id="Z9g-Ah-owb">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ym3-AZ-OaJ" userLabel="nameLabel">
@@ -282,6 +282,7 @@
                     <connections>
                         <outlet property="carbohydrateLabel" destination="srV-UV-vmw" id="ma8-Sd-eXl"/>
                         <outlet property="fatLabel" destination="BbU-KS-DNh" id="Xpz-Zp-vRh"/>
+                        <outlet property="healthynessLabel" destination="kkz-nN-bbc" id="VDo-H1-01U"/>
                         <outlet property="image" destination="2Hw-Hu-CwZ" id="A7b-wf-wcr"/>
                         <outlet property="proteinLabel" destination="rx9-Iw-3pI" id="g8g-yd-Yqb"/>
                         <outlet property="sugarLabel" destination="BdZ-d0-PO1" id="RrM-U1-4Xd"/>
@@ -408,13 +409,12 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="kTc-ey-OY9">
-                        <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="d55-FX-Srf">
-                            <rect key="frame" x="113" y="6" width="150" height="33"/>
+                            <rect key="frame" x="112.5" y="5.5" width="150" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="carrot_logo" translatesAutoresizingMaskIntoConstraints="NO" id="yNC-JJ-IL8">
-                                    <rect key="frame" x="-45" y="-30" width="234" height="80"/>
+                                    <rect key="frame" x="-30" y="-16" width="209" height="65"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                             </subviews>
@@ -440,7 +440,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5491.5" y="1278.5"/>
+            <point key="canvasLocation" x="5490.3999999999996" y="1277.8110944527737"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7ai-Zb-u7M">
@@ -468,7 +468,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VSk-ZL-Ok4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="more" id="D2P-bD-E1A"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gUK-Y5-HKK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gUK-Y5-HKK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.36078431370000003" green="0.80392156859999997" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -490,6 +490,6 @@
         <image name="images" width="306" height="165"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AtB-br-Hny"/>
+        <segue reference="lvF-sg-BKv"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,7 +16,7 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -37,18 +37,19 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! MyTableViewCell
+        
         if shouldUseSearchResult {
+            cell.foodProduct = searchResult[indexPath.row]
+            let url = "http://www.matapi.se/foodstuff/\(cell.foodProduct!.number)"
+            manager.loadNutritionFromUrl(url: url)
+            
             cell.nameLabel?.text = searchResult[indexPath.row].name
-            cell.name = searchResult[indexPath.row].name
-            
-            cell.energyValueLabel?.text = "\(searchResult[indexPath.row].calories) kCal"
-            cell.energyValue = 230
+            if let calories = searchResult[indexPath.row].calories {
+                cell.energyValueLabel?.text = "\(calories) kCal"
+            }
         } else {
-            cell.nameLabel?.text = "" //manager.sampleData[indexPath.row].name
-            cell.name = "" //manager.sampleData[indexPath.row].name
-            
-            cell.energyValueLabel?.text = "300 kj" // TODO: - Change from default value
-            cell.energyValue = 300
+            cell.nameLabel?.text = ""
+            cell.energyValueLabel?.text = "" 
         }
         return cell
     }
@@ -60,7 +61,7 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
         if let query = searchController.searchBar.text?.lowercased() {
             let url = "http://www.matapi.se/foodstuff?query=\(query)"
             manager.loadDataFromUrl(url: url)
-            searchResult = manager.data.filter { $0.name.contains(query) }
+            searchResult = manager.data.filter { $0.name.contains(query)}
         } else {
             searchResult = []
         }
@@ -78,17 +79,16 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
     
     // MARK: - Navigation
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        
-//        if segue.identifier == "pushToDetailsView" {
-//            let detailsViewController = segue.destination as! DetailsViewController
-////            detailsViewController.manager = self.manager
-////            detailsViewController.foodProductName = cell.name
-////            if let cell = sender as? MyTableViewCell {
-////                detailsViewController.titleLabel?.text = cell.name
-////                segue.destination.title = cell.name
-////            }
-//        }
-//    }
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+            if segue.identifier == "pushToDetailsView" {
+                let detailsViewController = segue.destination as! DetailsViewController
+                if let cell = sender as? MyTableViewCell {
+                    detailsViewController.titleLabel?.text = cell.foodProduct?.name
+//                    detailsViewController.fatLabel?.text = "Fat: \(cell.foodProduct?.fat)"
+                    detailsViewController.foodProduct = cell.foodProduct
+                }
+            }
+        }
 }
 
