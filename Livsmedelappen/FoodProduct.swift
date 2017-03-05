@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class FoodProduct : NSObject, NSCoding {
     
@@ -17,6 +18,7 @@ class FoodProduct : NSObject, NSCoding {
     var carbohydrates: Double?
     var fat: Double?
     var sugar: Double?
+    var foodImage: UIImage?
     
     init(json: [String: Any]) {
         guard let name = json["name"] as? String else {
@@ -30,20 +32,16 @@ class FoodProduct : NSObject, NSCoding {
         self.number = number
     }
     
-    init(name: String, number: Int) {
-        self.name = name
-        self.number = number 
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         self.name = aDecoder.decodeObject(forKey: "name") as? String ?? ""
         self.number = aDecoder.decodeInteger(forKey: "number")
-        
+    
 //        self.calories = aDecoder.decodeDouble(forKey: "calories")
 //        self.protein = aDecoder.decodeDouble(forKey: "protein")
 //        self.carbohydrates = aDecoder.decodeDouble(forKey: "carbohydrates")
 //        self.fat = aDecoder.decodeDouble(forKey: "fat")
 //        self.sugar = aDecoder.decodeDouble(forKey: "sugar")
+        self.foodImage = aDecoder.decodeObject(forKey: "image") as? UIImage
     }
     
     func encode(with aCoder: NSCoder) {
@@ -54,6 +52,7 @@ class FoodProduct : NSObject, NSCoding {
         aCoder.encode(carbohydrates, forKey: "carbohydrates")
         aCoder.encode(fat, forKey: "fat")
         aCoder.encode(sugar, forKey: "sugar")
+        aCoder.encode(foodImage, forKey: "image")
     }
     
     override var description: String {

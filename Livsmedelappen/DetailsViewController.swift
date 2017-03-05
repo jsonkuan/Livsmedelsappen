@@ -19,16 +19,21 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var sugarLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var fatLabel: UILabel!
-
+    
     
     let manager = DataManager.sharedInstance
     var foodProduct: FoodProduct!
     var shouldHideButton: Bool = true
+    var imageID = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         saveButton.isEnabled = true
         saveButton.setTitle("Spara som favorit", for: .normal)
+        
+        if foodProduct.foodImage != nil {
+            imageView.image = foodProduct.foodImage
+        }
         
         if shouldHideButton {
             saveButton.isHidden = true
@@ -98,13 +103,14 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         }
         imageView.image = image
+        foodProduct.foodImage = image
         picker.dismiss(animated: true, completion: nil)
     }
     
     var imagePath: String {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         if let documentsDirectory = paths.first {
-            return documentsDirectory.appending(("/cached.png"))
+            return documentsDirectory.appending(("/cached)\(imageID+=1).png"))
         } else {
             fatalError("No documents directory")
         }
@@ -123,13 +129,4 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
         saveButton.isEnabled = false
         saveButton.setTitle("Sparat!", for: .disabled)
     }
-    
-  // MARK: - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-//     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//     // Get the new view controller using segue.destinationViewController.
-//     // Pass the selected object to the new view controller.
-//     }
-
 }

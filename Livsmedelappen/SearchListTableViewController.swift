@@ -20,7 +20,7 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
         super.viewDidLoad()
         
         logoImageView.image = #imageLiteral(resourceName: "Logo")
-        
+    
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false

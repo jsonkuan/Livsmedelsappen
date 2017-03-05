@@ -37,8 +37,8 @@ class FavoritesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyTableViewCell
        
         cell.foodProduct = manager.favorites[indexPath.row]
-        cell.nameLabel?.text = manager.favorites[indexPath.row].name
-        if let calories =  manager.favorites[indexPath.row].calories {
+        cell.nameLabel?.text = cell.foodProduct?.name
+        if let calories =  cell.foodProduct?.calories {
             cell.energyValueLabel?.text = "\(calories) kCal"
         }
         return cell
@@ -49,7 +49,6 @@ class FavoritesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "showDetailsViewController" {
-        print("Segue performed")    
             let detailsViewController = segue.destination as! DetailsViewController
             if let cell = sender as? MyTableViewCell {
                 detailsViewController.titleLabel?.text = cell.foodProduct?.name
