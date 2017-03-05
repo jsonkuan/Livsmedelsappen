@@ -27,6 +27,8 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        saveButton.isEnabled = true
+        saveButton.setTitle("Spara som favorit", for: .normal)
         
         if shouldHideButton {
             saveButton.isHidden = true
@@ -34,13 +36,8 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
         } else {
             titleImage.image = #imageLiteral(resourceName: "Logo")
         }
-        
-        if foodProduct == nil {
-            foodProduct = manager.favorites.first
-        }
-        
         let url = "http://www.matapi.se/foodstuff/\(foodProduct.number)"
-        manager.loadNutritionFromUrl(url: url)
+        self.manager.loadNutritionFromUrl(url: url)
         configureLabels()
     }
     
@@ -63,85 +60,76 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
             let carbs = foodProduct.carbohydrates,
             let sugar = foodProduct.sugar,
             let fat = foodProduct.fat {
-                let good = protein + carbs
-                let bad = sugar + fat
+            let good = protein + carbs
+            let bad = sugar + fat
             return round(good / bad)
         }
-            return 0
-        }
+        return 0
+    }
+    
+    // MARK: - Camera 
+    
+    @IBAction func takePhoto(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
         
-        @IBAction func takePhoto(_ sender: Any) {
-            let picker = UIImagePickerController()
-            picker.delegate = self
-            picker.allowsEditing = true
-            
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                picker.sourceType = .camera
-            } else if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-                picker.sourceType = .savedPhotosAlbum
-            } else {
-                fatalError("No source type.")
-            }
-            present(picker, animated: true, completion: nil)
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            picker.sourceType = .camera
+        } else if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            picker.sourceType = .savedPhotosAlbum
+        } else {
+            fatalError("No source type.")
         }
+        present(picker, animated: true, completion: nil)
+    }
+     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerEditedImage] as! UIImage
         
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-            let image = info[UIImagePickerControllerEditedImage] as! UIImage
-            
-            //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-            if let data = UIImagePNGRepresentation(image) {
-                do {
-                    let url = URL(fileURLWithPath: imagePath)
-                    try data.write(to: url)
-                    NSLog("Done writing image data to file \(imagePath)")
-                } catch let error{
-                    NSLog("Failed to save image data: \(error)")
-                }
-            }
-            imageView.image = image
-            picker.dismiss(animated: true, completion: nil)
-        }
-        
-        var imagePath: String {
-            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-            if let documentsDirectory = paths.first {
-                return documentsDirectory.appending(("/cached.png"))
-            } else {
-                fatalError("No documents directory")
+        //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        if let data = UIImagePNGRepresentation(image) {
+            do {
+                let url = URL(fileURLWithPath: imagePath)
+                try data.write(to: url)
+                NSLog("Done writing image data to file \(imagePath)")
+            } catch let error{
+                NSLog("Failed to save image data: \(error)")
             }
         }
-        
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            picker.dismiss(animated: true, completion: nil)
+        imageView.image = image
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    var imagePath: String {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        if let documentsDirectory = paths.first {
+            return documentsDirectory.appending(("/cached.png"))
+        } else {
+            fatalError("No documents directory")
         }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Favorites
+    
+    @IBAction func saveToFavorites(_ sender: Any) {
+        manager.favorites.append(foodProduct)
+        manager.saveFavorites()
         
-        @IBAction func saveToFavorites(_ sender: Any) {
-            manager.favorites.append(foodProduct)
-            
-            //        var archiveArray: [Data]?
-            //        let favoriteItem = NSKeyedArchiver.archivedData(withRootObject: manager.favorites)
-            //        archiveArray?.append(favoriteItem)
-            //
-            //        let defaults = UserDefaults.standard
-            //        defaults.set(favoriteItem, forKey: "favoritesList")
-            //        defaults.synchronize()
-            //
-            //        NSMutableArray *archiveArray = [NSMutableArray arrayWithCapacity:mutableDataArray.count];
-            //        for (BC_Person *personObject in mutableDataArray) {
-            //            NSData *personEncodedObject = [NSKeyedArchiver archivedDataWithRootObject:personObject];
-            //            [archiveArray addObject:personEncodedObject];
-            //        }
-            //
-            //        NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
-            //        [userData setObject:archiveArray forKey:@"personDataArray"];
-        }
-        
-        // MARK: - Navigation
-        
-        // In a storyboard-based application, you will often want to do a little preparation before navigation
-        //     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //     // Get the new view controller using segue.destinationViewController.
-        //     // Pass the selected object to the new view controller.
-        //     }
-        
+        saveButton.isEnabled = false
+        saveButton.setTitle("Sparat!", for: .disabled)
+    }
+    
+  // MARK: - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+//     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//     // Get the new view controller using segue.destinationViewController.
+//     // Pass the selected object to the new view controller.
+//     }
+
 }

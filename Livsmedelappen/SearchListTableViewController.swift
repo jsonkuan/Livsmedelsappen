@@ -34,9 +34,7 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
     }
     
     // MARK: - Table view data source

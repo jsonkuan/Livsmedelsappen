@@ -24,6 +24,7 @@ class DataManager {
     
     var data: [FoodProduct] = []
     var favorites: [FoodProduct] = []
+    let defaults = UserDefaults.standard
    
     func loadDataFromUrl(url: String) {
         if let safeUrlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
@@ -99,4 +100,21 @@ class DataManager {
         }
     }
 
+    func saveFavorites() {
+        let favorite = NSKeyedArchiver.archivedData(withRootObject: favorites)
+        defaults.set(favorite, forKey: "favorites")
+    }
+    
+    func loadFavorites() {
+        if let favoriteData = defaults.object(forKey: "favorites") as? NSData {
+            if let favoriteList = NSKeyedUnarchiver.unarchiveObject(with: favoriteData as Data) as? [FoodProduct] {
+                favorites = favoriteList
+            }
+        }
+    }
+    
+    func deleteFavorites() {
+        defaults.removeObject(forKey: "favorites")
+    }
+   
 }

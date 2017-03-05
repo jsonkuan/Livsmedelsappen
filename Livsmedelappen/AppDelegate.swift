@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UISearchBar.appearance().tintColor = UIColor.white
         UITabBar.appearance().tintColor =  UIColor.LivsmedelGreen()
         UINavigationBar.appearance().tintColor = UIColor.white
+       
         return true
     }
 

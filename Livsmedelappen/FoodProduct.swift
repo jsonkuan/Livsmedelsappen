@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FoodProduct : CustomStringConvertible {
+class FoodProduct : NSObject, NSCoding {
     
     let name: String
     let number: Int
@@ -29,17 +29,34 @@ class FoodProduct : CustomStringConvertible {
         self.name = name
         self.number = number
     }
-     //    required init?(coder aDecoder: NSCoder) {
-    //        aDecoder.decodeObject(forKey: "favoriteList")
-    //    }
-    //
-    //    func encode(with aCoder: NSCoder) {
-    //        aCoder.encode(name)
-    //        aCoder.encode(number)
-    //        aCoder.encode(calories)
-    //    }
     
-    var description: String {
+    init(name: String, number: Int) {
+        self.name = name
+        self.number = number 
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.name = aDecoder.decodeObject(forKey: "name") as? String ?? ""
+        self.number = aDecoder.decodeInteger(forKey: "number")
+        
+//        self.calories = aDecoder.decodeDouble(forKey: "calories")
+//        self.protein = aDecoder.decodeDouble(forKey: "protein")
+//        self.carbohydrates = aDecoder.decodeDouble(forKey: "carbohydrates")
+//        self.fat = aDecoder.decodeDouble(forKey: "fat")
+//        self.sugar = aDecoder.decodeDouble(forKey: "sugar")
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(number, forKey: "number")
+        aCoder.encode(calories, forKey: "calories")
+        aCoder.encode(protein, forKey: "protein")
+        aCoder.encode(carbohydrates, forKey: "carbohydrates")
+        aCoder.encode(fat, forKey: "fat")
+        aCoder.encode(sugar, forKey: "sugar")
+    }
+    
+    override var description: String {
         return "Name: \(self.name), Number:\(self.number)"
     }
     

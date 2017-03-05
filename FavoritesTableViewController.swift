@@ -14,6 +14,7 @@ class FavoritesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        manager.loadFavorites()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,7 +44,6 @@ class FavoritesTableViewController: UITableViewController {
         return cell
     }
 
-    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
