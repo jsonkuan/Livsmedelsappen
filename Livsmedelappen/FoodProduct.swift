@@ -16,7 +16,7 @@ class FoodProduct : CustomStringConvertible {
     var protein: Double?
     var carbohydrates: Double?
     var fat: Double?
-    var salt: Double?
+    var sugar: Double?
     
     init(json: [String: Any]) {
         guard let name = json["name"] as? String else {

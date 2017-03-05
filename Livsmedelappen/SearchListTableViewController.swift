@@ -10,6 +10,8 @@ import UIKit
 
 class SearchListTableViewController: UITableViewController, UISearchResultsUpdating {
     
+    @IBOutlet weak var logoImageView: UIImageView!
+  
     var searchController: UISearchController!
     var searchResult: [FoodProduct] = []
     let manager = DataManager.sharedInstance
@@ -17,12 +19,24 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        logoImageView.image = #imageLiteral(resourceName: "Logo")
+        
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Sök Livsmedel"
         tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: - Table view data source
@@ -40,7 +54,8 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
         
         if shouldUseSearchResult {
             cell.foodProduct = searchResult[indexPath.row]
-            let url = "http://www.matapi.se/foodstuff/\(cell.foodProduct!.number)"
+            let itemNumber = cell.foodProduct!.number
+            let url = "http://www.matapi.se/foodstuff/\(itemNumber)"
             manager.loadNutritionFromUrl(url: url)
             
             cell.nameLabel?.text = searchResult[indexPath.row].name
@@ -54,7 +69,7 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
         return cell
     }
     
-    // MARK: - UISearchResultsUpdating protocol methods
+    // MARK: - UISearchResultsUpdating protocol
     
     func updateSearchResults(for searchController: UISearchController) {
         
@@ -85,9 +100,9 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
                 let detailsViewController = segue.destination as! DetailsViewController
                 if let cell = sender as? MyTableViewCell {
                     detailsViewController.titleLabel?.text = cell.foodProduct?.name
-//                    detailsViewController.fatLabel?.text = "Fat: \(cell.foodProduct?.fat)"
                     detailsViewController.foodProduct = cell.foodProduct
                 }
+                detailsViewController.shouldHideButton = false
             }
         }
 }

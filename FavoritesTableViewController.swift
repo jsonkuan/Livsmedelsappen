@@ -17,7 +17,9 @@ class FavoritesTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -33,21 +35,28 @@ class FavoritesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyTableViewCell
        
+        cell.foodProduct = manager.favorites[indexPath.row]
         cell.nameLabel?.text = manager.favorites[indexPath.row].name
-        cell.energyValueLabel?.text = "\(manager.favorites[indexPath.row].calories) kCal"
-
+        if let calories =  manager.favorites[indexPath.row].calories {
+            cell.energyValueLabel?.text = "\(calories) kCal"
+        }
         return cell
     }
 
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showDetailsViewController" {
-//            let detailsViewController = segue.destination as! DetailsViewController
-//            detailsViewController.manager = self.manager
-//        }
-//    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showDetailsViewController" {
+        print("Segue performed")    
+            let detailsViewController = segue.destination as! DetailsViewController
+            if let cell = sender as? MyTableViewCell {
+                detailsViewController.titleLabel?.text = cell.foodProduct?.name
+                detailsViewController.foodProduct = cell.foodProduct
+            }
+            detailsViewController.shouldHideButton = true
+        }
+    }
 
 }

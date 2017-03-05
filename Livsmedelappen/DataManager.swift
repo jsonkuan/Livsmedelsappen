@@ -35,7 +35,9 @@ class DataManager {
                     let jsonOptions = JSONSerialization.ReadingOptions()
                     do {
                         if let json = try JSONSerialization.jsonObject(with: actualData, options: jsonOptions) as? [[String:Any]] {
-                            self.data = json.map(FoodProduct.init)
+                            DispatchQueue.main.async {
+                                self.data = json.map(FoodProduct.init)
+                            }
                         } else {
                             throw SerializationError.invalid("Failed to cast from json.")
                         }
@@ -68,7 +70,7 @@ class DataManager {
                                 let protein = nutrientValue["protein"],
                                 let carbohydrates = nutrientValue["carbohydrates"],
                                 let fat = nutrientValue["fat"],
-                                let salt = nutrientValue["salt"],
+                                let sugar = nutrientValue["saccharose"],
                                 let food = self.data.first(where: {number == $0.number }) {
                                 
                                    DispatchQueue.main.async {
@@ -76,7 +78,7 @@ class DataManager {
                                     food.protein = protein
                                     food.carbohydrates = carbohydrates
                                     food.fat = fat
-                                    food.salt = salt 
+                                    food.sugar = sugar
                                 }
                             } else {
                                 fatalError("Unable to parse nutritional data")
