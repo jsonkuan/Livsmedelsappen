@@ -74,7 +74,7 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
         if let query = searchController.searchBar.text?.lowercased() {
             let url = "http://www.matapi.se/foodstuff?query=\(query)"
             manager.loadDataFromUrl(url: url)
-            searchResult = manager.data.filter { $0.name.contains(query)}
+            searchResult = manager.data.filter { $0.name.lowercased().contains(query)}
         } else {
             searchResult = []
         }
