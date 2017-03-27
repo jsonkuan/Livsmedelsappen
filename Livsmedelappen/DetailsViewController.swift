@@ -36,6 +36,7 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         if shouldHideButton {
             saveButton.isHidden = true
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.LivsmedelGreen()
             titleImage.image = #imageLiteral(resourceName: "Favorites")
         } else {
             titleImage.image = #imageLiteral(resourceName: "Logo")
