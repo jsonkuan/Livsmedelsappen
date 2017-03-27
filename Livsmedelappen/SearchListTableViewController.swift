@@ -33,7 +33,6 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-        
     }
     
     // MARK: - Table view data source
