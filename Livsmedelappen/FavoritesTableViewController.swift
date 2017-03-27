@@ -56,6 +56,7 @@ class FavoritesTableViewController: UITableViewController {
                 detailsViewController.foodProduct = cell.foodProduct
             }
             detailsViewController.shouldHideButton = true
+            detailsViewController.shouldHideCompare = false
         }
     }
 

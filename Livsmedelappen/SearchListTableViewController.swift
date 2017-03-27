@@ -103,6 +103,7 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
                     detailsViewController.foodProduct = cell.foodProduct
                 }
                 detailsViewController.shouldHideButton = false
+                detailsViewController.shouldHideCompare = true
             }
         }
 }

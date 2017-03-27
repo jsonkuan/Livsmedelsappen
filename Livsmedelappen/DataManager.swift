@@ -23,6 +23,7 @@ class DataManager {
     var data: [FoodProduct] = []
     var favorites: [FoodProduct] = []
     let defaults = UserDefaults.standard
+    var compare: [FoodProduct] = []
    
     func loadDataFromUrl(url: String) {
         if let safeUrlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
@@ -113,6 +114,5 @@ class DataManager {
     
     func deleteFavorites() {
         defaults.removeObject(forKey: "favorites")
-    }
-   
+    }   
 }

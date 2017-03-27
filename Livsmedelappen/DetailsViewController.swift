@@ -13,6 +13,7 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var carbohydrateLabel: UILabel!
     @IBOutlet weak var healthynessLabel: UILabel!
     @IBOutlet weak var titleImage: UIImageView!
+    @IBOutlet weak var compareButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var proteinLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
@@ -23,12 +24,15 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
     let manager = DataManager.sharedInstance
     var foodProduct: FoodProduct!
     var shouldHideButton: Bool = true
+    var shouldHideCompare: Bool = true
     var imageID = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         saveButton.isEnabled = true
         saveButton.setTitle("Spara som favorit", for: .normal)
+        compareButton.isEnabled = true
+        compareButton.setTitle("Gemföra", for: .normal)
         
         if foodProduct.foodImage != nil {
             imageView.image = foodProduct.foodImage
@@ -40,6 +44,10 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
             titleImage.image = #imageLiteral(resourceName: "Favorites")
         } else {
             titleImage.image = #imageLiteral(resourceName: "Logo")
+        }
+        
+        if shouldHideCompare {
+            compareButton.isHidden = true
         }
         
         DispatchQueue.main.async {
@@ -131,5 +139,16 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         saveButton.isEnabled = false
         saveButton.setTitle("Sparat!", for: .disabled)
+    }
+    
+    @IBAction func compareItem(_ sender: UIButton) {
+        if manager.compare.count <= 1 {
+            manager.compare.append(foodProduct)
+        } else {
+            manager.compare.removeFirst()
+            manager.compare.append(foodProduct)
+        }
+        compareButton.isEnabled = false
+        compareButton.setTitle("Lagt till i diagram!", for: .normal)
     }
 }
