@@ -55,6 +55,7 @@ class FlyingCarrotsViewController: UIViewController, GKBarGraphDataSource {
         }
         
         if (manager.compare.count == 2) {
+            greenBarLabel.text? = manager.compare[0].name
             orangeBarLabel.text? = manager.compare[1].name
         }
     }

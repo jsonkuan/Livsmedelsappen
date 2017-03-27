@@ -543,11 +543,11 @@
             </objects>
             <point key="canvasLocation" x="4552.8000000000002" y="445.72713643178412"/>
         </scene>
-        <!--Compare-->
+        <!--Gemföra-->
         <scene sceneID="yGC-Xw-53A">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VSk-ZL-Ok4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Compare" badgeValue="New" id="D2P-bD-E1A"/>
+                    <tabBarItem key="tabBarItem" title="Gemföra" badgeValue="Nytt" id="D2P-bD-E1A"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gUK-Y5-HKK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
