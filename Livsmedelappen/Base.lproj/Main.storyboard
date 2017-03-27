@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rzw-Zh-EjI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rzw-Zh-EjI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XkW-rw-tbp" id="IcM-80-JEe">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkG-5e-o6R">
@@ -33,7 +33,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="energyValue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wpf-ef-MPC">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wpf-ef-MPC">
                                             <rect key="frame" x="247" y="8" width="95" height="27.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="95" id="uwa-53-ZZC"/>
@@ -101,7 +101,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nm4-Xb-zgO" id="Z9g-Ah-owb">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ym3-AZ-OaJ" userLabel="nameLabel">
@@ -329,7 +329,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fp9-oq-Wtq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="search" id="k2W-oP-ZPq"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pzH-nV-UZn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pzH-nV-UZn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.36078431372549019" green="0.80392156862745101" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -457,7 +457,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9cQ-Ti-qtq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="Nx7-Ko-tNQ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uDd-jO-JT7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uDd-jO-JT7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.36078431372549019" green="0.80392156862745101" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -477,7 +477,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VSk-ZL-Ok4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="more" id="D2P-bD-E1A"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gUK-Y5-HKK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gUK-Y5-HKK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.36078431370000003" green="0.80392156859999997" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -499,6 +499,6 @@
         <image name="images" width="306" height="165"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lvF-sg-BKv"/>
+        <segue reference="AtB-br-Hny"/>
     </inferredMetricsTieBreakers>
 </document>

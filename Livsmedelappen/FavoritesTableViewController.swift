@@ -11,14 +11,15 @@ import UIKit
 class FavoritesTableViewController: UITableViewController {
 
     let manager = DataManager.sharedInstance
+    var foodProduct: FoodProduct!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        manager.loadFavorites()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         DispatchQueue.main.async {
+            self.manager.loadFavorites()
             self.tableView.reloadData()
         }
     }

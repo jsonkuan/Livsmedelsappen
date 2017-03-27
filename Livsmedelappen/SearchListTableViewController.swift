@@ -27,14 +27,13 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
         searchController.searchBar.placeholder = "Sök Livsmedel"
         tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
-        
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
     }
     
     // MARK: - Table view data source
@@ -73,8 +72,12 @@ class SearchListTableViewController: UITableViewController, UISearchResultsUpdat
         
         if let query = searchController.searchBar.text?.lowercased() {
             let url = "http://www.matapi.se/foodstuff?query=\(query)"
-            manager.loadDataFromUrl(url: url)
-            searchResult = manager.data.filter { $0.name.lowercased().contains(query)}
+            
+            if (shouldUseSearchResult) {
+                manager.loadDataFromUrl(url: url)
+                searchResult = manager.data.filter { $0.name.lowercased().contains(query)}
+            }
+            
         } else {
             searchResult = []
         }

@@ -35,8 +35,6 @@ class FlyingCarrotsViewController: UIViewController {
         
         dynamicAnimator.addBehavior(gravity)
         dynamicAnimator.addBehavior(collision)
-
-        
     }
     
     @IBAction func snapCarrot(_ sender: UITapGestureRecognizer) {

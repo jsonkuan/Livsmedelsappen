@@ -36,11 +36,11 @@ class FoodProduct : NSObject, NSCoding {
         self.name = aDecoder.decodeObject(forKey: "name") as? String ?? ""
         self.number = aDecoder.decodeInteger(forKey: "number")
     
-//        self.calories = aDecoder.decodeDouble(forKey: "calories")
-//        self.protein = aDecoder.decodeDouble(forKey: "protein")
-//        self.carbohydrates = aDecoder.decodeDouble(forKey: "carbohydrates")
-//        self.fat = aDecoder.decodeDouble(forKey: "fat")
-//        self.sugar = aDecoder.decodeDouble(forKey: "sugar")
+        self.calories = aDecoder.decodeObject(forKey: "calories") as? Double
+        self.protein = aDecoder.decodeObject(forKey: "protein") as? Double
+        self.carbohydrates = aDecoder.decodeObject(forKey: "carbohydrates") as? Double
+        self.fat = aDecoder.decodeObject(forKey: "fat") as? Double
+        self.sugar = aDecoder.decodeObject(forKey: "sugar") as? Double
         self.foodImage = aDecoder.decodeObject(forKey: "image") as? UIImage
     }
     

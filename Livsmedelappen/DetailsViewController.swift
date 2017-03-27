@@ -20,7 +20,6 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var fatLabel: UILabel!
     
-    
     let manager = DataManager.sharedInstance
     var foodProduct: FoodProduct!
     var shouldHideButton: Bool = true
@@ -41,9 +40,12 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
         } else {
             titleImage.image = #imageLiteral(resourceName: "Logo")
         }
-        let url = "http://www.matapi.se/foodstuff/\(foodProduct.number)"
-        self.manager.loadNutritionFromUrl(url: url)
-        configureLabels()
+        
+        DispatchQueue.main.async {
+            let url = "http://www.matapi.se/foodstuff/\(self.foodProduct.number)"
+            self.manager.loadNutritionFromUrl(url: url)
+            self.configureLabels()
+        }
     }
     
     func configureLabels() {

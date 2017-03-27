@@ -15,10 +15,8 @@ enum SerializationError: Error {
 
 class DataManager {
     
-    // Singleton
     static let sharedInstance: DataManager = {
         let instance = DataManager()
-        //Setup code here...
         return instance
     }()
     
@@ -82,7 +80,7 @@ class DataManager {
                                     food.sugar = sugar
                                 }
                             } else {
-                                fatalError("Unable to parse nutritional data")
+                                throw SerializationError.missing("Unable to parse nutritional data")
                             }
                         } else {
                             throw SerializationError.invalid("Failed to cast from json.")
